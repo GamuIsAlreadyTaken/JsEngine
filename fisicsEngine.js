@@ -124,7 +124,12 @@ class FisicsBody {
 		return false;
 	}
 }
-
+/**
+ * Creates and returns a vector
+ * @param {Number} x 
+ * @param {Number} y 
+ * @returns Vector
+ */
 function createVector(x, y) {
     return {
         x: x,
