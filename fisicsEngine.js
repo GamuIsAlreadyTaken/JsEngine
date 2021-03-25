@@ -123,8 +123,19 @@ class FisicsBody {
 		}
 		return false;
 	}
-}
+	rotate(angle){
+		canvasManager.pen.save();
+		canvasManager.pen.translate(this.pos.x,this.pos.y);
+		canvasManager.pen.rotate(angle);
+	}
 
+}
+/**
+ * Creates and returns a vector
+ * @param {Number} x 
+ * @param {Number} y 
+ * @returns Vector
+ */
 function createVector(x, y) {
     return {
         x: x,
