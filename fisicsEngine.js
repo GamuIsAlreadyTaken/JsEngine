@@ -1,3 +1,5 @@
+
+
 /**
  * It represents a fisical object
  */
@@ -136,17 +138,13 @@ class FisicsBody {
  * @param {Number} y 
  * @returns Vector
  */
-function createVector(x, y) {
-    return {
-        x: x,
-        y: y,
-        mag() { return Math.sqrt(this.x ** 2 + this.y ** 2) },
-        setMag(mag) {
-            let m = this.mag();
-            this.x /= (m / mag);
-            this.y /= (m / mag);
-        }
-    }
+function createVector(x = 0, y = 0,z = 0) {
+    return new Vector(x,y,z);
+}
+function createRandomVector(){
+	let randVect = new Vector(Math.random()-0.5,Math.random()-0.5,Math.random()-0.5);
+	randVect.setMag(1);
+	return randVect;
 }
 
 

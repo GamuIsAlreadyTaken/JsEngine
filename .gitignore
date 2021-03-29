@@ -1,4 +1,9 @@
 
-index.html
-sketch.js
-classes
+#Ignora todo menos los archivos de motor
+
+*
+
+!fisicsEngine.js
+!canvasManager.js
+!vector.js
+!README.md

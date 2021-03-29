@@ -1,5 +1,5 @@
 
-
+let width,height;
 let canvasManager = {
     canvas: null,
     pen: null,
@@ -31,14 +31,20 @@ function updateMouse(event){
     mouseX = event.clientX - rect.left;
     mouseY = event.clientY - rect.top;
 }
-
+//Color
+function rgba(r,g,b,a = 1){
+    return "#"+r.toString(16)+g.toString(16)+b.toString(16)+(Math.round(a*255)).toString(16);
+}
 //Canvas
+
 function createCanvas(w, h = w) {
     let canvas = document.createElement('canvas');
     canvas.width = w;
     canvas.height = h;
     canvasManager.canvas = canvas;
     canvasManager.pen = canvas.getContext('2d');
+    width = w;
+    height = h;
 }
 function frameRate(frameRate) {
     canvasManager.frameRate = frameRate;
@@ -59,14 +65,19 @@ function pop() {
     canvasManager.pen.restore();
 }
 function background(color) {
+    
     push();
-    fill(color)
+    fill(color);
     canvasManager.pen.fillRect(0, 0, canvasManager.canvas.width, canvasManager.canvas.height);
     pop();
 }
 function rect(x, y, w, h = w) {
     canvasManager.pen.fillRect(x, y, w, h);
     canvasManager.pen.strokeRect(x, y, w, h);
+}
+function point(x,y){
+    canvasManager.pen.fillRect(x,y,1,1);
+    canvasManager.pen.strokeRect(x,y,1,1);
 }
 function ellipse(x,y,w,h = w) {
     canvasManager.pen.beginPath();
