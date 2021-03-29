@@ -33,6 +33,9 @@ function updateMouse(event){
 }
 //Color
 function rgba(r,g,b,a = 1){
+    r = Math.round(r);
+    g = Math.round(g);
+    b = Math.round(b);
     return "#"+r.toString(16)+g.toString(16)+b.toString(16)+(Math.round(a*255)).toString(16);
 }
 //Canvas
@@ -65,19 +68,22 @@ function pop() {
     canvasManager.pen.restore();
 }
 function background(color) {
-    
     push();
     fill(color);
     canvasManager.pen.fillRect(0, 0, canvasManager.canvas.width, canvasManager.canvas.height);
     pop();
+}
+
+function text(text,x,y,s){
+    canvasManager.pen.font = s + " " + canvasManager.pen.font.split(" ")[1];
+    canvasManager.pen.fillText(text,x,y);
 }
 function rect(x, y, w, h = w) {
     canvasManager.pen.fillRect(x, y, w, h);
     canvasManager.pen.strokeRect(x, y, w, h);
 }
 function point(x,y){
-    canvasManager.pen.fillRect(x,y,1,1);
-    canvasManager.pen.strokeRect(x,y,1,1);
+    ellipse(x,y,1);
 }
 function ellipse(x,y,w,h = w) {
     canvasManager.pen.beginPath();

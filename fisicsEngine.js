@@ -30,8 +30,8 @@ class FisicsBody {
 		//Si hay collision devuelve -1
 		if (this.collision(obj)) 
 			return -1;
-		let distX = Math.max(0, abs((this.pos.x + (this.width / 2)) - (obj.pos.x + (obj.width / 2))) - (this.width / 2) - (obj.width / 2));
-		let distY = Math.max(0, abs((this.pos.y + (this.height / 2)) - (obj.pos.y + (obj.height / 2))) - (this.height / 2) - (obj.height / 2));
+		let distX = Math.max(0, Math.abs((this.pos.x + (this.width / 2)) - (obj.pos.x + (obj.width / 2))) - (this.width / 2) - (obj.width / 2));
+		let distY = Math.max(0, Math.abs((this.pos.y + (this.height / 2)) - (obj.pos.y + (obj.height / 2))) - (this.height / 2) - (obj.height / 2));
 
 		return Math.sqrt(distX ** 2 + distY ** 2);
 	}
@@ -44,8 +44,8 @@ class FisicsBody {
 	distanceToPoint(x, y) {
 		if (this.pointCollision(x, y, this)) 
 			return -1;
-		let distX = Math.max(0, abs((this.pos.x + (this.width / 2)) - x) - (this.width / 2));
-		let distY = Math.max(0, abs((this.pos.y + (this.height / 2)) - y) - (this.height / 2));
+		let distX = Math.max(0, Math.abs((this.pos.x + (this.width / 2)) - x) - (this.width / 2));
+		let distY = Math.max(0, Math.abs((this.pos.y + (this.height / 2)) - y) - (this.height / 2));
 
 		return Math.sqrt(distX ** 2 + distY ** 2);
 	}
@@ -141,9 +141,9 @@ class FisicsBody {
 function createVector(x = 0, y = 0,z = 0) {
     return new Vector(x,y,z);
 }
-function createRandomVector(){
+function createRandomVector(mag = 1){
 	let randVect = new Vector(Math.random()-0.5,Math.random()-0.5,Math.random()-0.5);
-	randVect.setMag(1);
+	randVect.setMag(mag);
 	return randVect;
 }
 

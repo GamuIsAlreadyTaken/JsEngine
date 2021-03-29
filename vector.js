@@ -25,9 +25,16 @@ class Vector{
      * @param {Number} magnitude
      */
     setMag(mag) {
-        let m = this.mag();
-        this.x /= (m / mag);
-        this.y /= (m / mag);
+        let m = this.mag() / mag;
+        this.x /= m;
+        this.y /= m;
+        this.z /= m;
+        return this;
+    }
+    clampMag(mag){
+        if (this.mag() > mag) {
+            this.setMag(mag);
+        }
         return this;
     }
     /**
